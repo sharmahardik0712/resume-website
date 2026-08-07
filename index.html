@@ -1,564 +1,1624 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hardik Sharma — Backend Software Engineer | Java, Python, Distributed Systems</title>
-<meta name="description" content="Hardik Sharma is a Backend Software Engineer with 3.5+ years building distributed pipelines, gRPC services, and Kafka-driven automation for logistics and shipment platforms.">
-<meta name="author" content="Hardik Sharma">
-<meta property="og:title" content="Hardik Sharma — Backend Software Engineer">
-<meta property="og:description" content="Backend engineer building distributed systems: Kafka pipelines, gRPC services, Kubernetes infrastructure.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0A0A0B">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0A0A0B; --bg-alt:#111113; --panel:#151517; --line:#26262A; --line-soft:#1C1C1F;
-    --text:#F2F0EB; --text-muted:#9B9B9F; --text-faint:#5C5C60; --accent:#C9A227;
-    --accent-soft:rgba(201,162,39,0.10); --focus:#E8C15C;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg); color:var(--text); font-family:'Inter', sans-serif; line-height:1.65; -webkit-font-smoothing:antialiased;}
-  ::selection{background:var(--accent); color:var(--bg);}
-  a{color:inherit; text-decoration:none;}
-  img,svg{max-width:100%; display:block;}
-  :focus-visible{outline:2px solid var(--focus); outline-offset:3px; border-radius:2px;}
-  .sr-only{position:absolute; left:-9999px;}
-  .skip-link{position:absolute; left:-999px; top:auto; background:var(--accent); color:#0A0A0B; padding:12px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; z-index:999; border-radius:2px;}
-  .skip-link:focus{left:24px; top:24px;}
-  .serif{font-family:'Fraunces', serif;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  .wrap{max-width:1120px; margin:0 auto; padding:0 40px;}
-  @media (max-width:640px){ .wrap{padding:0 20px;} }
-  .label{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-faint);}
-  .label .dot{color:var(--accent);}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Hardik Sharma — Backend Software Engineer | Java, Python, Distributed
+      Systems
+    </title>
+    <meta
+      name="description"
+      content="Hardik Sharma is a Backend Software Engineer with 3.5+ years building distributed pipelines, gRPC services, and Kafka-driven automation for logistics and shipment platforms."
+    />
+    <meta name="author" content="Hardik Sharma" />
+    <meta
+      property="og:title"
+      content="Hardik Sharma — Backend Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Backend engineer building distributed systems: Kafka pipelines, gRPC services, Kubernetes infrastructure."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0A0A0B" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0b;
+        --bg-alt: #111113;
+        --panel: #151517;
+        --line: #26262a;
+        --line-soft: #1c1c1f;
+        --text: #f2f0eb;
+        --text-muted: #9b9b9f;
+        --text-faint: #5c5c60;
+        --accent: #c9a227;
+        --accent-soft: rgba(201, 162, 39, 0.1);
+        --focus: #e8c15c;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img,
+      svg {
+        max-width: 100%;
+        display: block;
+      }
+      :focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+      .sr-only {
+        position: absolute;
+        left: -9999px;
+      }
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: auto;
+        background: var(--accent);
+        color: #0a0a0b;
+        padding: 12px 20px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 13px;
+        z-index: 999;
+        border-radius: 2px;
+      }
+      .skip-link:focus {
+        left: 24px;
+        top: 24px;
+      }
+      .serif {
+        font-family: "Fraunces", serif;
+      }
+      .mono {
+        font-family: "IBM Plex Mono", monospace;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      @media (max-width: 640px) {
+        .wrap {
+          padding: 0 20px;
+        }
+      }
+      .label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+      }
+      .label .dot {
+        color: var(--accent);
+      }
 
-  header{position:sticky; top:0; z-index:50; background:rgba(10,10,11,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line-soft);}
-  nav{display:flex; align-items:center; justify-content:space-between; max-width:1120px; margin:0 auto; padding:20px 40px; gap:20px;}
-  .brand{font-family:'Fraunces', serif; font-weight:500; font-size:18px;}
-  .nav-links{display:flex; align-items:center; gap:28px; flex-wrap:wrap;}
-  .nav-links a{font-size:13px; color:var(--text-muted); transition:color 0.2s;}
-  .nav-links a:hover, .nav-links a:focus-visible{color:var(--text);}
-  .nav-cta{font-family:'IBM Plex Mono', monospace; font-size:12px; padding:9px 16px; border:1px solid var(--accent); color:var(--accent); border-radius:2px; white-space:nowrap;}
-  .nav-cta:hover{background:var(--accent); color:#0A0A0B;}
-  @media (max-width:760px){ .nav-links a:not(.nav-cta){display:none;} nav{padding:18px 20px;} }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(10, 10, 11, 0.92);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line-soft);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        gap: 20px;
+      }
+      .brand {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 18px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        font-size: 13px;
+        color: var(--text-muted);
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--text);
+      }
+      .nav-cta {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12px;
+        padding: 9px 16px;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 2px;
+        white-space: nowrap;
+      }
+      .nav-cta:hover {
+        background: var(--accent);
+        color: #0a0a0b;
+      }
+      @media (max-width: 760px) {
+        .nav-links a:not(.nav-cta) {
+          display: none;
+        }
+        nav {
+          padding: 18px 20px;
+        }
+      }
 
-  .hero{padding:100px 0 0;}
-  @media (max-width:640px){ .hero{padding:64px 0 0;} }
-  h1.headline{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(32px, 5.6vw, 66px); line-height:1.1; letter-spacing:-0.01em; max-width:880px; margin-bottom:22px;}
-  h1.headline em{font-style:italic; font-weight:400; color:var(--accent);}
-  .hero .sub{font-size:17px; color:var(--text-muted); max-width:600px; margin-bottom:32px;}
+      .hero {
+        padding: 100px 0 0;
+      }
+      @media (max-width: 640px) {
+        .hero {
+          padding: 64px 0 0;
+        }
+      }
+      h1.headline {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: clamp(24px, 4vw, 48px);
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        max-width: 880px;
+        margin-bottom: 22px;
+      }
+      h1.headline em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--accent);
+      }
+      .hero .sub {
+        font-size: 12px;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin-bottom: 32px;
+      }
 
-  .credibility-strip{
-    display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);
-    margin-bottom:40px;
-  }
-  .cred-item{
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--text-muted);
-    padding:14px 22px; border-right:1px solid var(--line-soft); flex:1 1 auto; white-space:nowrap;
-  }
-  .cred-item:last-child{border-right:none;}
-  .cred-item strong{color:var(--text); font-weight:500;}
-  @media (max-width:700px){ .credibility-strip{flex-direction:column;} .cred-item{border-right:none; border-bottom:1px solid var(--line-soft);} .cred-item:last-child{border-bottom:none;} }
+      .credibility-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        border-top: 1px solid var(--line-soft);
+        border-bottom: 1px solid var(--line-soft);
+        margin-bottom: 40px;
+      }
+      .cred-item {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12.5px;
+        color: var(--text-muted);
+        padding: 14px 22px;
+        border-right: 1px solid var(--line-soft);
+        flex: 1 1 auto;
+        white-space: nowrap;
+      }
+      .cred-item:last-child {
+        border-right: none;
+      }
+      .cred-item strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+      @media (max-width: 700px) {
+        .credibility-strip {
+          flex-direction: column;
+        }
+        .cred-item {
+          border-right: none;
+          border-bottom: 1px solid var(--line-soft);
+        }
+        .cred-item:last-child {
+          border-bottom: none;
+        }
+      }
 
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:70px;}
-  .btn{font-size:13.5px; padding:14px 24px; border-radius:2px; display:inline-flex; align-items:center; gap:8px; transition:all 0.2s ease; letter-spacing:0.02em; font-family:'Inter', sans-serif;}
-  .btn-primary{background:var(--accent); color:#0A0A0B; font-weight:600;}
-  .btn-primary:hover{background:#DDB43A;}
-  .btn-ghost{border:1px solid var(--line); color:var(--text-muted);}
-  .btn-ghost:hover{border-color:var(--accent); color:var(--text);}
+      .cta-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 70px;
+      }
+      .btn {
+        font-size: 13.5px;
+        padding: 14px 24px;
+        border-radius: 2px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+        letter-spacing: 0.02em;
+        font-family: "Inter", sans-serif;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #0a0a0b;
+        font-weight: 600;
+      }
+      .btn-primary:hover {
+        background: #ddb43a;
+      }
+      .btn-ghost {
+        border: 1px solid var(--line);
+        color: var(--text-muted);
+      }
+      .btn-ghost:hover {
+        border-color: var(--accent);
+        color: var(--text);
+      }
 
-  section{padding:90px 0;}
-  @media (max-width:640px){ section{padding:56px 0;} }
-  .sec-label{margin-bottom:18px;}
-  .sec-title{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(26px,3.2vw,38px); margin-bottom:44px; max-width:640px;}
-  .sec-title em{font-style:italic; color:var(--accent); font-weight:400;}
+      section {
+        padding: 90px 0;
+      }
+      @media (max-width: 640px) {
+        section {
+          padding: 56px 0;
+        }
+      }
+      .sec-label {
+        margin-bottom: 18px;
+      }
+      .sec-title {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: clamp(26px, 3.2vw, 38px);
+        margin-bottom: 44px;
+        max-width: 640px;
+      }
+      .sec-title em {
+        font-style: italic;
+        color: var(--accent);
+        font-weight: 400;
+      }
 
-  .highlights-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft);}
-  @media (max-width:900px){ .highlights-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:520px){ .highlights-grid{grid-template-columns:1fr;} }
-  .highlight-card{background:var(--bg); padding:30px 26px;}
-  .highlight-card .h-num{font-family:'Fraunces', serif; font-weight:500; font-size:26px; color:var(--accent); display:block; margin-bottom:10px;}
-  .highlight-card .h-label{font-size:13.5px; color:var(--text); font-weight:600; margin-bottom:8px;}
-  .highlight-card .h-desc{font-size:13px; color:var(--text-muted); line-height:1.55;}
+      .highlights-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--line-soft);
+        border: 1px solid var(--line-soft);
+      }
+      @media (max-width: 900px) {
+        .highlights-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 520px) {
+        .highlights-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .highlight-card {
+        background: var(--bg);
+        padding: 30px 26px;
+      }
+      .highlight-card .h-num {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 26px;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 10px;
+      }
+      .highlight-card .h-label {
+        font-size: 13.5px;
+        color: var(--text);
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .highlight-card .h-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.55;
+      }
 
-  .about-grid{display:grid; grid-template-columns:1fr 1.4fr; gap:56px;}
-  @media (max-width:800px){ .about-grid{grid-template-columns:1fr; gap:32px;} }
-  .about-body p{font-size:16.5px; color:var(--text-muted); margin-bottom:16px; max-width:580px;}
-  .about-body strong{color:var(--text); font-weight:600;}
-  .about-facts{border-left:1px solid var(--line); padding-left:26px;}
-  @media (max-width:800px){ .about-facts{border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:24px;} }
-  .fact{margin-bottom:24px;}
-  .fact:last-child{margin-bottom:0;}
-  .fact .k{font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-faint); margin-bottom:6px;}
-  .fact .v{font-size:14.5px; color:var(--text);}
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 56px;
+      }
+      @media (max-width: 800px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
+      .about-body p {
+        font-size: 16.5px;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+        max-width: 580px;
+      }
+      .about-body strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .about-facts {
+        border-left: 1px solid var(--line);
+        padding-left: 26px;
+      }
+      @media (max-width: 800px) {
+        .about-facts {
+          border-left: none;
+          border-top: 1px solid var(--line);
+          padding-left: 0;
+          padding-top: 24px;
+        }
+      }
+      .fact {
+        margin-bottom: 24px;
+      }
+      .fact:last-child {
+        margin-bottom: 0;
+      }
+      .fact .k {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 6px;
+      }
+      .fact .v {
+        font-size: 14.5px;
+        color: var(--text);
+      }
 
-  .exp-item{display:grid; grid-template-columns:180px 1fr; gap:36px; padding:34px 0; border-top:1px solid var(--line-soft);}
-  .exp-item:last-child{border-bottom:1px solid var(--line-soft);}
-  @media (max-width:700px){ .exp-item{grid-template-columns:1fr; gap:10px;} }
-  .exp-date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-faint); padding-top:4px;}
-  .exp-role{font-family:'Fraunces', serif; font-size:21px; font-weight:500; margin-bottom:4px;}
-  .exp-org{font-size:13.5px; color:var(--accent); margin-bottom:14px;}
-  .exp-bullets{list-style:none; max-width:640px;}
-  .exp-bullets li{font-size:14.5px; color:var(--text-muted); padding-left:18px; position:relative; margin-bottom:12px;}
-  .exp-bullets li::before{content:'—'; position:absolute; left:0; color:var(--text-faint);}
-  .exp-bullets li strong{color:var(--text); font-weight:500;}
+      .exp-item {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 36px;
+        padding: 34px 0;
+        border-top: 1px solid var(--line-soft);
+      }
+      .exp-item:last-child {
+        border-bottom: 1px solid var(--line-soft);
+      }
+      @media (max-width: 700px) {
+        .exp-item {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+      .exp-date {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12px;
+        color: var(--text-faint);
+        padding-top: 4px;
+      }
+      .exp-role {
+        font-family: "Fraunces", serif;
+        font-size: 21px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+      .exp-org {
+        font-size: 13.5px;
+        color: var(--accent);
+        margin-bottom: 14px;
+      }
+      .exp-bullets {
+        list-style: none;
+        max-width: 640px;
+      }
+      .exp-bullets li {
+        font-size: 14.5px;
+        color: var(--text-muted);
+        padding-left: 18px;
+        position: relative;
+        margin-bottom: 12px;
+      }
+      .exp-bullets li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--text-faint);
+      }
+      .exp-bullets li strong {
+        color: var(--text);
+        font-weight: 500;
+      }
 
-  .proj-group-label{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-faint); letter-spacing:0.1em; text-transform:uppercase; margin:0 0 24px; padding-top:8px; display:flex; align-items:center; gap:14px;}
-  .proj-group-label::after{content:''; flex:1; height:1px; background:var(--line-soft);}
-  .proj-group{margin-bottom:56px;}
-  .proj-group:last-child{margin-bottom:0;}
+      .proj-group-label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12px;
+        color: var(--text-faint);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 0 0 24px;
+        padding-top: 8px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .proj-group-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--line-soft);
+      }
+      .proj-group {
+        margin-bottom: 56px;
+      }
+      .proj-group:last-child {
+        margin-bottom: 0;
+      }
 
-  .proj-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
-  @media (max-width:760px){ .proj-cards{grid-template-columns:1fr;} }
+      .proj-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+      }
+      @media (max-width: 760px) {
+        .proj-cards {
+          grid-template-columns: 1fr;
+        }
+      }
 
-  .proj-card{background:var(--panel); border:1px solid var(--line-soft); border-radius:4px; padding:26px; display:flex; flex-direction:column; gap:16px;}
-  .proj-card-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
-  .proj-card h3{font-family:'Fraunces', serif; font-size:18px; font-weight:500;}
-  .proj-card .yr{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--text-faint); white-space:nowrap; padding-top:4px;}
-  .proj-block .pb-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:5px;}
-  .proj-block p{font-size:13.5px; color:var(--text-muted);}
-  .proj-diagram{background:var(--bg-alt); border:1px solid var(--line-soft); border-radius:3px; padding:14px 10px;}
-  .proj-diagram svg{width:100%; height:auto;}
-  .diag-box{fill:var(--bg); stroke:var(--line); stroke-width:1;}
-  .diag-label{font-family:'IBM Plex Mono', monospace; font-size:9px; fill:var(--text);}
-  .diag-sub{font-family:'IBM Plex Mono', monospace; font-size:7.5px; fill:var(--text-faint);}
-  .diag-dot{fill:var(--accent);}
-  .diag-flow{stroke:var(--accent); stroke-width:1.5; fill:none; stroke-dasharray:4 6; animation:diagflow 1.4s linear infinite;}
-  @media (prefers-reduced-motion: reduce){ .diag-flow{animation:none;} }
-  @keyframes diagflow{ to{ stroke-dashoffset:-20; } }
-  .proj-stack{display:flex; flex-wrap:wrap; gap:6px;}
-  .chip{font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--text-muted); border:1px solid var(--line); padding:3px 8px; border-radius:2px; white-space:nowrap;}
-  .proj-links{display:flex; gap:14px; margin-top:auto; padding-top:4px;}
-  .proj-links a{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-muted); display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid transparent;}
-  .proj-links a:hover{color:var(--accent); border-color:var(--accent);}
+      .proj-card {
+        background: var(--panel);
+        border: 1px solid var(--line-soft);
+        border-radius: 4px;
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .proj-card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .proj-card h3 {
+        font-family: "Fraunces", serif;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .proj-card .yr {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10.5px;
+        color: var(--text-faint);
+        white-space: nowrap;
+        padding-top: 4px;
+      }
+      .proj-block .pb-label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 5px;
+      }
+      .proj-block p {
+        font-size: 13.5px;
+        color: var(--text-muted);
+      }
+      .proj-diagram {
+        background: var(--bg-alt);
+        border: 1px solid var(--line-soft);
+        border-radius: 3px;
+        padding: 14px 10px;
+      }
+      .proj-diagram svg {
+        width: 100%;
+        height: auto;
+      }
+      .diag-box {
+        fill: var(--bg);
+        stroke: var(--line);
+        stroke-width: 1;
+      }
+      .diag-label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 9px;
+        fill: var(--text);
+      }
+      .diag-sub {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 7.5px;
+        fill: var(--text-faint);
+      }
+      .diag-dot {
+        fill: var(--accent);
+      }
+      .diag-flow {
+        stroke: var(--accent);
+        stroke-width: 1.5;
+        fill: none;
+        stroke-dasharray: 4 6;
+        animation: diagflow 1.4s linear infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .diag-flow {
+          animation: none;
+        }
+      }
+      @keyframes diagflow {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+      .proj-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .chip {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        color: var(--text-muted);
+        border: 1px solid var(--line);
+        padding: 3px 8px;
+        border-radius: 2px;
+        white-space: nowrap;
+      }
+      .proj-links {
+        display: flex;
+        gap: 14px;
+        margin-top: auto;
+        padding-top: 4px;
+      }
+      .proj-links a {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 11.5px;
+        color: var(--text-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border-bottom: 1px solid transparent;
+      }
+      .proj-links a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
 
-  /* MORE PROJECTS — compact list */
-  .more-list{border-top:1px solid var(--line-soft);}
-  .more-item{display:grid; grid-template-columns:1fr 2fr auto; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid var(--line-soft);}
-  @media (max-width:700px){ .more-item{grid-template-columns:1fr; gap:8px;} }
-  .more-item h4{font-family:'Fraunces', serif; font-size:15.5px; font-weight:500;}
-  .more-item .org{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--text-faint); display:block; margin-top:2px;}
-  .more-item p{font-size:13px; color:var(--text-muted);}
-  .more-item a{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-muted); white-space:nowrap;}
-  .more-item a:hover{color:var(--accent);}
+      /* MORE PROJECTS — compact list */
+      .more-list {
+        border-top: 1px solid var(--line-soft);
+      }
+      .more-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr auto;
+        gap: 20px;
+        align-items: center;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      @media (max-width: 700px) {
+        .more-item {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+      .more-item h4 {
+        font-family: "Fraunces", serif;
+        font-size: 15.5px;
+        font-weight: 500;
+      }
+      .more-item .org {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10.5px;
+        color: var(--text-faint);
+        display: block;
+        margin-top: 2px;
+      }
+      .more-item p {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+      .more-item a {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 11.5px;
+        color: var(--text-muted);
+        white-space: nowrap;
+      }
+      .more-item a:hover {
+        color: var(--accent);
+      }
 
-  .skills-cols{display:grid; grid-template-columns:repeat(5,1fr); gap:32px;}
-  @media (max-width:900px){ .skills-cols{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:520px){ .skills-cols{grid-template-columns:1fr;} }
-  .skill-col .label{margin-bottom:14px;}
-  .skill-col ul{list-style:none;}
-  .skill-col li{font-size:14px; color:var(--text-muted); padding:5px 0; border-bottom:1px solid var(--line-soft);}
-  .skill-col li:last-child{border-bottom:none;}
+      .skills-cols {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 32px;
+      }
+      @media (max-width: 900px) {
+        .skills-cols {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 520px) {
+        .skills-cols {
+          grid-template-columns: 1fr;
+        }
+      }
+      .skill-col .label {
+        margin-bottom: 14px;
+      }
+      .skill-col ul {
+        list-style: none;
+      }
+      .skill-col li {
+        font-size: 14px;
+        color: var(--text-muted);
+        padding: 5px 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .skill-col li:last-child {
+        border-bottom: none;
+      }
 
-  .achv-list{list-style:none;}
-  .achv-list li{display:grid; grid-template-columns:110px 1fr; gap:22px; padding:20px 0; border-top:1px solid var(--line-soft); font-size:14.5px; color:var(--text-muted);}
-  .achv-list li:last-child{border-bottom:1px solid var(--line-soft);}
-  @media (max-width:600px){ .achv-list li{grid-template-columns:1fr; gap:6px;} }
-  .achv-list .tag{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em;}
-  .achv-list strong{color:var(--text); font-weight:600;}
+      .achv-list {
+        list-style: none;
+      }
+      .achv-list li {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 22px;
+        padding: 20px 0;
+        border-top: 1px solid var(--line-soft);
+        font-size: 14.5px;
+        color: var(--text-muted);
+      }
+      .achv-list li:last-child {
+        border-bottom: 1px solid var(--line-soft);
+      }
+      @media (max-width: 600px) {
+        .achv-list li {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+      }
+      .achv-list .tag {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10.5px;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      .achv-list strong {
+        color: var(--text);
+        font-weight: 600;
+      }
 
-  footer{padding:90px 0 50px; border-top:1px solid var(--line-soft); text-align:center;}
-  footer h2{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(26px,4.2vw,44px); margin-bottom:18px;}
-  footer h2 em{font-style:italic; color:var(--accent); font-weight:400;}
-  footer p.sub{color:var(--text-muted); margin-bottom:34px; font-size:15.5px;}
-  .foot-links{display:flex; justify-content:center; gap:26px; margin-top:44px; flex-wrap:wrap;}
-  .foot-links a{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--text-faint); letter-spacing:0.05em;}
-  .foot-links a:hover{color:var(--accent);}
-  .copyright{margin-top:50px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-faint); letter-spacing:0.05em;}
-</style>
-</head>
-<body>
+      footer {
+        padding: 90px 0 50px;
+        border-top: 1px solid var(--line-soft);
+        text-align: center;
+      }
+      footer h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: clamp(26px, 4.2vw, 44px);
+        margin-bottom: 18px;
+      }
+      footer h2 em {
+        font-style: italic;
+        color: var(--accent);
+        font-weight: 400;
+      }
+      footer p.sub {
+        color: var(--text-muted);
+        margin-bottom: 34px;
+        font-size: 15.5px;
+      }
+      .foot-links {
+        display: flex;
+        justify-content: center;
+        gap: 26px;
+        margin-top: 44px;
+        flex-wrap: wrap;
+      }
+      .foot-links a {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12.5px;
+        color: var(--text-faint);
+        letter-spacing: 0.05em;
+      }
+      .foot-links a:hover {
+        color: var(--accent);
+      }
+      .copyright {
+        margin-top: 50px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 11px;
+        color: var(--text-faint);
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-<a href="#main" class="skip-link">Skip to main content</a>
-
-<header>
-  <nav aria-label="Primary">
-    <div class="brand">Hardik Sharma</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a class="nav-cta" href="Hardik_Sharma_Resume.pdf" download>Resume ↓</a>
-    </div>
-  </nav>
-</header>
-
-<main id="main">
-<div class="wrap">
-
-  <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <h1 id="hero-heading" class="headline">I build distributed backend systems that transform unstructured business documents into reliable, <em>structured</em> data through event-driven AI pipelines.</h1>
-
-    <div class="credibility-strip">
-      <div class="cred-item"><strong>Backend Engineer</strong></div>
-      <div class="cred-item">Distributed Systems · AI Document Processing</div>
-      <div class="cred-item">Java · Python · Kafka · Kubernetes</div>
-    </div>
-
-    <div class="cta-row">
-      <a class="btn btn-primary" href="Hardik_Sharma_Resume.pdf" download>Download Resume</a>
-      <a class="btn btn-ghost" href="mailto:sharmahardik0712@gmail.com">Email me</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/hardik-sharma" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </section>
-
-  <!-- HIGHLIGHTS -->
-  <section id="highlights" aria-labelledby="highlights-heading" style="padding-top:0;">
-    <h2 id="highlights-heading" class="sr-only">Highlights</h2>
-    <div class="highlights-grid">
-      <div class="highlight-card">
-        <span class="h-num">500+</span>
-        <div class="h-label">Shipments processed daily</div>
-        <div class="h-desc">Through the Intelligent Document Processing platform I built at Klearnow.</div>
-      </div>
-      <div class="highlight-card">
-        <span class="h-num">30K+</span>
-        <div class="h-label">Document images / day</div>
-        <div class="h-desc">Converted, OCR'd, and classified across PDFs, spreadsheets, and EML files.</div>
-      </div>
-      <div class="highlight-card">
-        <span class="h-num">~80%</span>
-        <div class="h-label">Automated extraction accuracy</div>
-        <div class="h-desc">Reducing manual review effort while letting operations scale without proportional headcount.</div>
-      </div>
-      <div class="highlight-card">
-        <span class="h-num">100–150</span>
-        <div class="h-label">ISF filings auto-submitted daily</div>
-        <div class="h-desc">Near-zero missed filings — avoiding penalties starting at $5,000/shipment.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" aria-labelledby="about-heading">
-    <div class="label sec-label">01 — About</div>
-    <h2 id="about-heading" class="sr-only">About</h2>
-    <div class="about-grid">
-      <div class="about-facts">
-        <div class="fact"><div class="k">Based in</div><div class="v">Gurugram, India</div></div>
-        <div class="fact"><div class="k">Currently</div><div class="v">Software Engineer II, Klearnow</div></div>
-        <div class="fact"><div class="k">Education</div><div class="v">B.Tech, IIT Jammu</div></div>
-        <div class="fact"><div class="k">Focus</div><div class="v">Distributed systems, pipelines, backend infra</div></div>
-      </div>
-      <div class="about-body">
-        <p>My career began in operations and business analysis, where I learned to understand complex business processes before thinking about technology. That perspective shapes how I approach software engineering today — I don't just build services; I design systems that solve real operational problems.</p>
-        <p>At <strong>Klearnow</strong>, I build distributed backend systems powering an intelligent document processing platform. The pipeline ingests email attachments, converts documents into images, performs OCR and document classification, routes them through targeted LLM prompts, validates and sanitizes the extracted data, and persists structured information into production databases. I work primarily with Java, Python, Kafka, gRPC, and Kubernetes to build systems that are reliable, scalable, and maintainable.</p>
-        <p>I enjoy understanding how distributed systems behave in production, simplifying complex workflows, and building software that teams can depend on as they scale.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" aria-labelledby="experience-heading">
-    <div class="label sec-label">02 — Experience</div>
-    <h2 id="experience-heading" class="sec-title">A track record in <em>production</em> systems.</h2>
-
-    <div class="exp-item">
-      <div class="exp-date mono">Sep 2024 — Present</div>
-      <div>
-        <div class="exp-role">Software Engineer II</div>
-        <div class="exp-org mono">Klearnow, Gurugram</div>
-        <ul class="exp-bullets">
-          <li>Rule-based and ML document processing required heavy manual intervention, creating a staffing bottleneck as shipment volume grew. <strong>Built</strong> an event-driven Intelligent Document Processing platform — email ingestion, format conversion, OCR, classification, LLM-based extraction, validation — now processing <strong>500+ shipments and 30K+ document images daily</strong> at ~80% automated extraction accuracy.</li>
-          <li>The reverse proxy's async Kafka workflow caused client timeouts for latency-sensitive UI requests, even when backend processing succeeded. <strong>Built</strong> a configurable gRPC routing layer letting selected request types bypass Kafka for direct, synchronous backend calls, with semaphore-based concurrency control to prevent thread pool exhaustion under load.</li>
-          <li>Large-file processing caused OutOfMemory crashes (JVM usage nearing 10GB) on Java 8, where GC alone couldn't recover memory in time. <strong>Built</strong> runtime memory monitoring that pauses processing at 95% of the container limit, plus alerting to auto-identify the files responsible — eliminating repeated pod crashes.</li>
-          <li>Missing or invalid ISF filings risk penalties starting at $5,000/shipment, and manual review slowed processing. <strong>Built</strong> a rule-based SOP engine that pulls customer profiles from MongoDB, auto-populates shipment fields, validates against configurable rules, and submits directly to CBP — now auto-filing <strong>100–150 shipments/day</strong> with near-zero missed filings.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-date mono">Jul 2022 — Aug 2024</div>
-      <div>
-        <div class="exp-role">Business Analyst — Internal Tooling & Automation</div>
-        <div class="exp-org mono">Eatclub Brands, Bengaluru</div>
-        <ul class="exp-bullets">
-          <li>Restaurant quality audits ran on a fully manual, Excel-based process. <strong>Built</strong> a centralized Flask + SQL web app that replaced the spreadsheet stack with a shared, queryable compliance system.</li>
-          <li>Reconciling delivery-partner data against internal records required daily manual cross-checking. <strong>Built</strong> automated Python/Pandas sync pipelines that ingest Swiggy/Zomato API data and flag reconciliation mismatches automatically.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-date mono">Jul 2021 — Jul 2022</div>
-      <div>
-        <div class="exp-role">Graduate Engineer Trainee</div>
-        <div class="exp-org mono">Larsen & Toubro, Gujarat</div>
-        <ul class="exp-bullets">
-          <li>Supervised heavy machinery logistics and operational safety workflows for the national High-Speed Rail Project; compiled cross-functional dataset summaries for internal management planning.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" aria-labelledby="projects-heading">
-    <div class="label sec-label">03 — Projects</div>
-    <h2 id="projects-heading" class="sec-title">Four systems, broken down.</h2>
-
-    <div class="proj-group">
-      <div class="proj-cards">
-
-        <article class="proj-card">
-          <div class="proj-card-head">
-            <h3>Intelligent Document Processing Platform</h3>
-            <span class="yr mono">Klearnow</span>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Problem</div>
-            <p>Document processing relied on rule-based and ML models with heavy manual intervention from operations. As shipment volume grew, scaling meant adding more operational staff — a bottleneck for growth.</p>
-          </div>
-          <div class="proj-diagram" role="img" aria-label="Diagram: email attachments are converted to images, run through OCR and classification, routed to document-specific LLM prompts for extraction, then validated and persisted to SQL.">
-            <svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg">
-              <path class="diag-flow" d="M100,65 H150"/>
-              <path class="diag-flow" d="M240,65 H290"/>
-              <path class="diag-flow" d="M370,65 H400" style="display:none"/>
-              <rect class="diag-box" x="10" y="40" width="90" height="50" rx="2"/>
-              <circle class="diag-dot" cx="22" cy="52" r="2.5"/>
-              <text class="diag-label" x="28" y="56">Email intake</text>
-              <text class="diag-sub" x="18" y="78">→ images</text>
-              <rect class="diag-box" x="150" y="40" width="90" height="50" rx="2"/>
-              <circle class="diag-dot" cx="162" cy="52" r="2.5"/>
-              <text class="diag-label" x="168" y="56">OCR + classify</text>
-              <rect class="diag-box" x="290" y="30" width="160" height="70" rx="2"/>
-              <circle class="diag-dot" cx="302" cy="44" r="2.5"/>
-              <text class="diag-label" x="308" y="48">LLM extraction</text>
-              <text class="diag-sub" x="300" y="64">validate + sanitize</text>
-              <text class="diag-sub" x="300" y="76">persist → SQL</text>
-            </svg>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">What I built</div>
-            <ul class="exp-bullets">
-              <li>Ingests email attachments from customer mailboxes and converts PDFs, spreadsheets, EML files, and other formats into images.</li>
-              <li>Performs OCR and document classification, then routes each document to document-specific LLM prompts for structured extraction.</li>
-              <li>Validates and sanitizes extracted data before persisting it to SQL databases.</li>
-              <li>Integrated the LLM-based extraction pipeline while preserving compatible parts of the existing ML-based workflow, enabling a gradual migration.</li>
-            </ul>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Impact</div>
-            <ul class="exp-bullets">
-              <li>Processes approximately <strong>500 shipments/day</strong>.</li>
-              <li>Document conversion service handles roughly <strong>30,000 document images/day</strong> across PDFs, spreadsheets, EML files, and other formats.</li>
-              <li>Achieved approximately <strong>80% automated extraction accuracy</strong>, cutting manual review effort and letting operations scale without proportional headcount growth.</li>
-              <li>Supports both fully automated and semi-automated workflows, where operations review AI-extracted data when required before customs brokers receive the final shipment information.</li>
-            </ul>
-          </div>
-          <div class="proj-stack"><span class="chip">Kafka</span><span class="chip">OCR</span><span class="chip">LLM</span><span class="chip">Python</span><span class="chip">SQL</span></div>
-          <div class="proj-links"><a href="#" target="_blank" rel="noopener">GitHub ↗ <span class="mono" style="font-size:10px; color:var(--text-faint);">(private)</span></a></div>
-        </article>
-
-        <article class="proj-card">
-          <div class="proj-card-head">
-            <h3>Java gRPC Routing Layer</h3>
-            <span class="yr mono">Klearnow</span>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Problem</div>
-            <p>The existing reverse proxy handled UI requests asynchronously — publishing events to Kafka and waiting for a response — so the request stayed open and could time out even when backend processing succeeded. Some interactions needed synchronous, lower-latency responses.</p>
-          </div>
-          <div class="proj-diagram" role="img" aria-label="Diagram: the reverse proxy routes latency-sensitive requests through a config-driven gRPC router with semaphore concurrency control directly to backend services, bypassing the async Kafka path.">
-            <svg viewBox="0 0 460 140" xmlns="http://www.w3.org/2000/svg">
-              <path class="diag-flow" d="M92,60 H160"/>
-              <path class="diag-flow" d="M300,60 H368"/>
-              <path class="diag-flow" d="M226,90 V110"/>
-              <rect class="diag-box" x="10" y="35" width="82" height="50" rx="2"/>
-              <circle class="diag-dot" cx="22" cy="47" r="2.5"/>
-              <text class="diag-label" x="28" y="51">Reverse proxy</text>
-              <rect class="diag-box" x="160" y="30" width="140" height="60" rx="2"/>
-              <circle class="diag-dot" cx="172" cy="44" r="2.5"/>
-              <text class="diag-label" x="178" y="48">gRPC Router</text>
-              <text class="diag-sub" x="170" y="64">config-driven</text>
-              <text class="diag-sub" x="170" y="76">semaphore limit</text>
-              <rect class="diag-box" x="368" y="35" width="82" height="50" rx="2"/>
-              <circle class="diag-dot" cx="380" cy="47" r="2.5"/>
-              <text class="diag-label" x="386" y="51">Services</text>
-              <rect class="diag-box" x="188" y="108" width="86" height="26" rx="2"/>
-              <text class="diag-sub" x="196" y="124">Async: Kafka path</text>
-            </svg>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">What I built</div>
-            <ul class="exp-bullets">
-              <li>Designed and implemented a configurable gRPC routing layer inside the Java reverse proxy.</li>
-              <li>Allowed selected request types to bypass the async Kafka workflow and talk directly to backend services via gRPC.</li>
-              <li>Introduced configuration-driven routing so only latency-sensitive operations used synchronous communication.</li>
-              <li>Implemented semaphore-based concurrency control to prevent thread pool exhaustion under load.</li>
-            </ul>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Impact</div>
-            <ul class="exp-bullets">
-              <li>Reduced response latency for synchronous, latency-sensitive workflows.</li>
-              <li>Prevented thread pool exhaustion under concurrent load.</li>
-              <li>Enabled a gradual migration without disrupting the existing Kafka-based architecture.</li>
-            </ul>
-          </div>
-          <div class="proj-stack"><span class="chip">Java</span><span class="chip">gRPC</span><span class="chip">Kafka</span><span class="chip">Kubernetes</span></div>
-          <div class="proj-links"><a href="#" target="_blank" rel="noopener">GitHub ↗ <span class="mono" style="font-size:10px; color:var(--text-faint);">(private)</span></a></div>
-        </article>
-
-        <article class="proj-card">
-          <div class="proj-card-head">
-            <h3>Memory Optimization — Document Converter</h3>
-            <span class="yr mono">Klearnow</span>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Problem</div>
-            <p>The document conversion service hit OutOfMemory errors on large files — memory usage occasionally grew to nearly <strong>10 GB</strong>, causing pod instability and crashes. Running on Java 8, garbage collection alone couldn't reliably recover memory under peak load.</p>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">What I built</div>
-            <ul class="exp-bullets">
-              <li>Added runtime memory monitoring that pauses new document processing when JVM memory approaches <strong>95%</strong> of the container limit, giving GC room to recover before continuing.</li>
-              <li>Built an alerting mechanism that automatically identifies the specific files responsible for abnormal memory growth, making production debugging significantly easier.</li>
-            </ul>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Impact</div>
-            <ul class="exp-bullets">
-              <li>Eliminated repeated pod crashes caused by oversized documents.</li>
-              <li>Improved production stability of the conversion service.</li>
-              <li>Enabled faster identification and resolution of problematic customer files.</li>
-            </ul>
-          </div>
-          <div class="proj-stack"><span class="chip">Java</span><span class="chip">JVM</span><span class="chip">Kubernetes</span><span class="chip">Monitoring</span></div>
-          <div class="proj-links"><a href="#" target="_blank" rel="noopener">GitHub ↗ <span class="mono" style="font-size:10px; color:var(--text-faint);">(private)</span></a></div>
-        </article>
-
-        <article class="proj-card">
-          <div class="proj-card-head">
-            <h3>Auto ISF Filing</h3>
-            <span class="yr mono">Klearnow</span>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Problem</div>
-            <p>Importer Security Filing (ISF) submissions are mandatory before cargo reaches the U.S. Missing or invalid filings risk penalties starting at <strong>$5,000/shipment</strong>, while manual review slowed processing and added operational effort.</p>
-          </div>
-          <div class="proj-diagram" role="img" aria-label="Diagram: customer-specific SOP profiles from MongoDB feed a rule engine that populates fields, validates them, and submits filings directly to CBP.">
-            <svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg">
-              <path class="diag-flow" d="M100,60 H160"/>
-              <path class="diag-flow" d="M300,60 H360"/>
-              <rect class="diag-box" x="10" y="35" width="90" height="50" rx="2"/>
-              <circle class="diag-dot" cx="22" cy="47" r="2.5"/>
-              <text class="diag-label" x="28" y="51">MongoDB</text>
-              <text class="diag-sub" x="18" y="73">SOP profiles</text>
-              <rect class="diag-box" x="160" y="30" width="140" height="60" rx="2"/>
-              <circle class="diag-dot" cx="172" cy="44" r="2.5"/>
-              <text class="diag-label" x="178" y="48">Rule engine</text>
-              <text class="diag-sub" x="170" y="64">populate fields</text>
-              <text class="diag-sub" x="170" y="76">validate</text>
-              <rect class="diag-box" x="360" y="35" width="90" height="50" rx="2"/>
-              <circle class="diag-dot" cx="372" cy="47" r="2.5"/>
-              <text class="diag-label" x="378" y="51">CBP</text>
-              <text class="diag-sub" x="368" y="73">submit</text>
-            </svg>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">What I built</div>
-            <ul class="exp-bullets">
-              <li>Designed and implemented a rule-based SOP engine that retrieves customer-specific SOP profiles from MongoDB.</li>
-              <li>Automatically populates missing shipment fields and applies configurable validation rules.</li>
-              <li>Submits validated filings directly to CBP.</li>
-            </ul>
-          </div>
-          <div class="proj-block">
-            <div class="pb-label">Impact</div>
-            <ul class="exp-bullets">
-              <li>Automatically files <strong>100–150 shipments/day</strong>.</li>
-              <li>Reduced manual intervention for ISF submissions.</li>
-              <li>Achieved near-zero missed ISF filings, helping avoid costly compliance penalties.</li>
-            </ul>
-          </div>
-          <div class="proj-stack"><span class="chip">MongoDB</span><span class="chip">Rule Engine</span><span class="chip">CBP Integration</span></div>
-          <div class="proj-links"><a href="#" target="_blank" rel="noopener">GitHub ↗ <span class="mono" style="font-size:10px; color:var(--text-faint);">(private)</span></a></div>
-        </article>
-
-      </div>
-    </div>
-
-    <!-- MORE PROJECTS -->
-    <div class="proj-group">
-      <div class="proj-group-label">More projects</div>
-      <div class="more-list">
-        <div class="more-item">
-          <div>
-            <h4>Compliance Tracking Automation</h4>
-            <span class="org">Eatclub Brands · 2022–24</span>
-          </div>
-          <p>Flask + SQL web app that replaced a fully manual Excel-based restaurant audit process with a centralized system.</p>
-          <a href="#" target="_blank" rel="noopener">GitHub ↗</a>
+    <header>
+      <nav aria-label="Primary">
+        <div class="brand">Hardik Sharma</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <a
+            class="nav-cta"
+            href="https://drive.google.com/uc?export=download&id=1OTueKHDGBcdYZa0MQbvqTiOesFuHPPVp"
+            download
+            >Resume ↓</a
+          >
         </div>
-        <div class="more-item">
-          <div>
-            <h4>AI Video Generator Service</h4>
-            <span class="org">Personal · 2026</span>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="hero-heading">
+          <h1 id="hero-heading" class="headline">
+            I build distributed backend systems that transform unstructured
+            business documents into reliable, <em>structured</em> data through
+            event-driven AI pipelines.
+          </h1>
+
+          <div class="credibility-strip">
+            <div class="cred-item"><strong>Backend Engineer</strong></div>
+            <div class="cred-item">
+              Distributed Systems · AI Document Processing
+            </div>
+            <div class="cred-item">Java · Python · Kafka · Kubernetes</div>
           </div>
-          <p>Microservice automating script generation, image synthesis, TTS voice-over, and FFmpeg rendering for YouTube delivery.</p>
-          <a href="#" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
-        <div class="more-item">
-          <div>
-            <h4>GitHub PR Automation Hook</h4>
-            <span class="org">Personal · 2025</span>
+
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://drive.google.com/uc?export=download&id=1OTueKHDGBcdYZa0MQbvqTiOesFuHPPVp"
+              download
+              >Download Resume</a
+            >
+            <a class="btn btn-ghost" href="mailto:sharmahardik0712@gmail.com"
+              >Email me</a
+            >
+            <a
+              class="btn btn-ghost"
+              href="https://www.linkedin.com/in/hardik-sharma-4aa198162/"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
           </div>
-          <p>Event-driven Flask server that validates inbound PRs against branch compliance rules and grants review access automatically.</p>
-          <a href="#" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
+        </section>
+
+        <!-- HIGHLIGHTS -->
+        <section
+          id="highlights"
+          aria-labelledby="highlights-heading"
+          style="padding-top: 0"
+        >
+          <h2 id="highlights-heading" class="sr-only">Highlights</h2>
+          <div class="highlights-grid">
+            <div class="highlight-card">
+              <span class="h-num">500+</span>
+              <div class="h-label">Shipments processed daily</div>
+              <div class="h-desc">
+                Through the Intelligent Document Processing platform I built at
+                Klearnow.
+              </div>
+            </div>
+            <div class="highlight-card">
+              <span class="h-num">30K+</span>
+              <div class="h-label">Document images / day</div>
+              <div class="h-desc">
+                Converted, OCR'd, and classified across PDFs, spreadsheets, and
+                EML files.
+              </div>
+            </div>
+            <div class="highlight-card">
+              <span class="h-num">~80%</span>
+              <div class="h-label">Automated extraction accuracy</div>
+              <div class="h-desc">
+                Reducing manual review effort while letting operations scale
+                without proportional headcount.
+              </div>
+            </div>
+            <div class="highlight-card">
+              <span class="h-num">100–150</span>
+              <div class="h-label">ISF filings auto-submitted daily</div>
+              <div class="h-desc">
+                Near-zero missed filings — avoiding penalties starting at
+                $5,000/shipment.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" aria-labelledby="about-heading">
+          <div class="label sec-label">01 — About</div>
+          <h2 id="about-heading" class="sr-only">About</h2>
+          <div class="about-grid">
+            <div class="about-facts">
+              <div class="fact">
+                <div class="k">Based in</div>
+                <div class="v">Gurugram, India</div>
+              </div>
+              <div class="fact">
+                <div class="k">Currently</div>
+                <div class="v">Software Engineer II, Klearnow</div>
+              </div>
+              <div class="fact">
+                <div class="k">Education</div>
+                <div class="v">B.Tech, IIT Jammu</div>
+              </div>
+              <div class="fact">
+                <div class="k">Focus</div>
+                <div class="v">
+                  Distributed systems, pipelines, backend infra
+                </div>
+              </div>
+            </div>
+            <div class="about-body">
+              <p>
+                My career began in operations and business analysis, where I
+                learned to understand complex business processes before thinking
+                about technology. That perspective shapes how I approach
+                software engineering today — I don't just build services; I
+                design systems that solve real operational problems.
+              </p>
+              <p>
+                At <strong>Klearnow</strong>, I build distributed backend
+                systems powering an intelligent document processing platform.
+                The pipeline ingests email attachments, converts documents into
+                images, performs OCR and document classification, routes them
+                through targeted LLM prompts, validates and sanitizes the
+                extracted data, and persists structured information into
+                production databases. I work primarily with Java, Python, Kafka,
+                gRPC, and Kubernetes to build systems that are reliable,
+                scalable, and maintainable.
+              </p>
+              <p>
+                I enjoy understanding how distributed systems behave in
+                production, simplifying complex workflows, and building software
+                that teams can depend on as they scale.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" aria-labelledby="experience-heading">
+          <div class="label sec-label">02 — Experience</div>
+          <h2 id="experience-heading" class="sec-title">
+            A track record in <em>production</em> systems.
+          </h2>
+
+          <div class="exp-item">
+            <div class="exp-date mono">Sep 2024 — Present</div>
+            <div>
+              <div class="exp-role">Software Engineer II</div>
+              <div class="exp-org mono">Klearnow, Gurugram</div>
+              <ul class="exp-bullets">
+                <li>
+                  Rule-based and ML document processing required heavy manual
+                  intervention, creating a staffing bottleneck as shipment
+                  volume grew. <strong>Built</strong> an event-driven
+                  Intelligent Document Processing platform — email ingestion,
+                  format conversion, OCR, classification, LLM-based extraction,
+                  validation — now processing
+                  <strong>500+ shipments and 30K+ document images daily</strong>
+                  at ~80% automated extraction accuracy.
+                </li>
+                <li>
+                  The reverse proxy's async Kafka workflow caused client
+                  timeouts for latency-sensitive UI requests, even when backend
+                  processing succeeded. <strong>Built</strong> a configurable
+                  gRPC routing layer letting selected request types bypass Kafka
+                  for direct, synchronous backend calls, with semaphore-based
+                  concurrency control to prevent thread pool exhaustion under
+                  load.
+                </li>
+                <li>
+                  Large-file processing caused OutOfMemory crashes (JVM usage
+                  nearing 10GB) on Java 8, where GC alone couldn't recover
+                  memory in time. <strong>Built</strong> runtime memory
+                  monitoring that pauses processing at 95% of the container
+                  limit, plus alerting to auto-identify the files responsible —
+                  eliminating repeated pod crashes.
+                </li>
+                <li>
+                  Missing or invalid ISF filings risk penalties starting at
+                  $5,000/shipment, and manual review slowed processing.
+                  <strong>Built</strong> a rule-based SOP engine that pulls
+                  customer profiles from MongoDB, auto-populates shipment
+                  fields, validates against configurable rules, and submits
+                  directly to CBP — now auto-filing
+                  <strong>100–150 shipments/day</strong> with near-zero missed
+                  filings.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-date mono">Jul 2022 — Aug 2024</div>
+            <div>
+              <div class="exp-role">
+                Business Analyst — Internal Tooling & Automation
+              </div>
+              <div class="exp-org mono">Eatclub Brands, Bengaluru</div>
+              <ul class="exp-bullets">
+                <li>
+                  Restaurant quality audits ran on a fully manual, Excel-based
+                  process. <strong>Built</strong> a centralized Flask + SQL web
+                  app that replaced the spreadsheet stack with a shared,
+                  queryable compliance system.
+                </li>
+                <li>
+                  Reconciling delivery-partner data against internal records
+                  required daily manual cross-checking.
+                  <strong>Built</strong> automated Python/Pandas sync pipelines
+                  that ingest Swiggy/Zomato API data and flag reconciliation
+                  mismatches automatically.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-date mono">Jul 2021 — Jul 2022</div>
+            <div>
+              <div class="exp-role">Graduate Engineer Trainee</div>
+              <div class="exp-org mono">Larsen & Toubro, Gujarat</div>
+              <ul class="exp-bullets">
+                <li>
+                  Supervised heavy machinery logistics and operational safety
+                  workflows for the national High-Speed Rail Project; compiled
+                  cross-functional dataset summaries for internal management
+                  planning.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" aria-labelledby="projects-heading">
+          <div class="label sec-label">03 — Projects</div>
+          <h2 id="projects-heading" class="sec-title">
+            Four systems, broken down.
+          </h2>
+
+          <div class="proj-group">
+            <div class="proj-cards">
+              <article class="proj-card">
+                <div class="proj-card-head">
+                  <h3>Intelligent Document Processing Platform</h3>
+                  <span class="yr mono">Klearnow</span>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Problem</div>
+                  <p>
+                    Document processing relied on rule-based and ML models with
+                    heavy manual intervention from operations. As shipment
+                    volume grew, scaling meant adding more operational staff — a
+                    bottleneck for growth.
+                  </p>
+                </div>
+                <div
+                  class="proj-diagram"
+                  role="img"
+                  aria-label="Diagram: email attachments are converted to images, run through OCR and classification, routed to document-specific LLM prompts for extraction, then validated and persisted to SQL."
+                >
+                  <svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg">
+                    <path class="diag-flow" d="M100,65 H150" />
+                    <path class="diag-flow" d="M240,65 H290" />
+                    <path
+                      class="diag-flow"
+                      d="M370,65 H400"
+                      style="display: none"
+                    />
+                    <rect
+                      class="diag-box"
+                      x="10"
+                      y="40"
+                      width="90"
+                      height="50"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="22" cy="52" r="2.5" />
+                    <text class="diag-label" x="28" y="56">Email intake</text>
+                    <text class="diag-sub" x="18" y="78">→ images</text>
+                    <rect
+                      class="diag-box"
+                      x="150"
+                      y="40"
+                      width="90"
+                      height="50"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="162" cy="52" r="2.5" />
+                    <text class="diag-label" x="168" y="56">
+                      OCR + classify
+                    </text>
+                    <rect
+                      class="diag-box"
+                      x="290"
+                      y="30"
+                      width="160"
+                      height="70"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="302" cy="44" r="2.5" />
+                    <text class="diag-label" x="308" y="48">
+                      LLM extraction
+                    </text>
+                    <text class="diag-sub" x="300" y="64">
+                      validate + sanitize
+                    </text>
+                    <text class="diag-sub" x="300" y="76">persist → SQL</text>
+                  </svg>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">What I built</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Ingests email attachments from customer mailboxes and
+                      converts PDFs, spreadsheets, EML files, and other formats
+                      into images.
+                    </li>
+                    <li>
+                      Performs OCR and document classification, then routes each
+                      document to document-specific LLM prompts for structured
+                      extraction.
+                    </li>
+                    <li>
+                      Validates and sanitizes extracted data before persisting
+                      it to SQL databases.
+                    </li>
+                    <li>
+                      Integrated the LLM-based extraction pipeline while
+                      preserving compatible parts of the existing ML-based
+                      workflow, enabling a gradual migration.
+                    </li>
+                  </ul>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Impact</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Processes approximately
+                      <strong>500 shipments/day</strong>.
+                    </li>
+                    <li>
+                      Document conversion service handles roughly
+                      <strong>30,000 document images/day</strong> across PDFs,
+                      spreadsheets, EML files, and other formats.
+                    </li>
+                    <li>
+                      Achieved approximately
+                      <strong>80% automated extraction accuracy</strong>,
+                      cutting manual review effort and letting operations scale
+                      without proportional headcount growth.
+                    </li>
+                    <li>
+                      Supports both fully automated and semi-automated
+                      workflows, where operations review AI-extracted data when
+                      required before customs brokers receive the final shipment
+                      information.
+                    </li>
+                  </ul>
+                </div>
+                <div class="proj-stack">
+                  <span class="chip">Kafka</span><span class="chip">OCR</span
+                  ><span class="chip">LLM</span><span class="chip">Python</span
+                  ><span class="chip">SQL</span>
+                </div>
+                <div class="proj-links">
+                  <a href="#" target="_blank" rel="noopener"
+                    >GitHub ↗
+                    <span
+                      class="mono"
+                      style="font-size: 10px; color: var(--text-faint)"
+                      >(private)</span
+                    ></a
+                  >
+                </div>
+              </article>
+
+              <article class="proj-card">
+                <div class="proj-card-head">
+                  <h3>Java gRPC Routing Layer</h3>
+                  <span class="yr mono">Klearnow</span>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Problem</div>
+                  <p>
+                    The existing reverse proxy handled UI requests
+                    asynchronously — publishing events to Kafka and waiting for
+                    a response — so the request stayed open and could time out
+                    even when backend processing succeeded. Some interactions
+                    needed synchronous, lower-latency responses.
+                  </p>
+                </div>
+                <div
+                  class="proj-diagram"
+                  role="img"
+                  aria-label="Diagram: the reverse proxy routes latency-sensitive requests through a config-driven gRPC router with semaphore concurrency control directly to backend services, bypassing the async Kafka path."
+                >
+                  <svg viewBox="0 0 460 140" xmlns="http://www.w3.org/2000/svg">
+                    <path class="diag-flow" d="M92,60 H160" />
+                    <path class="diag-flow" d="M300,60 H368" />
+                    <path class="diag-flow" d="M226,90 V110" />
+                    <rect
+                      class="diag-box"
+                      x="10"
+                      y="35"
+                      width="82"
+                      height="50"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="22" cy="47" r="2.5" />
+                    <text class="diag-label" x="28" y="51">Reverse proxy</text>
+                    <rect
+                      class="diag-box"
+                      x="160"
+                      y="30"
+                      width="140"
+                      height="60"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="172" cy="44" r="2.5" />
+                    <text class="diag-label" x="178" y="48">gRPC Router</text>
+                    <text class="diag-sub" x="170" y="64">config-driven</text>
+                    <text class="diag-sub" x="170" y="76">semaphore limit</text>
+                    <rect
+                      class="diag-box"
+                      x="368"
+                      y="35"
+                      width="82"
+                      height="50"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="380" cy="47" r="2.5" />
+                    <text class="diag-label" x="386" y="51">Services</text>
+                    <rect
+                      class="diag-box"
+                      x="188"
+                      y="108"
+                      width="86"
+                      height="26"
+                      rx="2"
+                    />
+                    <text class="diag-sub" x="196" y="124">
+                      Async: Kafka path
+                    </text>
+                  </svg>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">What I built</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Designed and implemented a configurable gRPC routing layer
+                      inside the Java reverse proxy.
+                    </li>
+                    <li>
+                      Allowed selected request types to bypass the async Kafka
+                      workflow and talk directly to backend services via gRPC.
+                    </li>
+                    <li>
+                      Introduced configuration-driven routing so only
+                      latency-sensitive operations used synchronous
+                      communication.
+                    </li>
+                    <li>
+                      Implemented semaphore-based concurrency control to prevent
+                      thread pool exhaustion under load.
+                    </li>
+                  </ul>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Impact</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Reduced response latency for synchronous,
+                      latency-sensitive workflows.
+                    </li>
+                    <li>
+                      Prevented thread pool exhaustion under concurrent load.
+                    </li>
+                    <li>
+                      Enabled a gradual migration without disrupting the
+                      existing Kafka-based architecture.
+                    </li>
+                  </ul>
+                </div>
+                <div class="proj-stack">
+                  <span class="chip">Java</span><span class="chip">gRPC</span
+                  ><span class="chip">Kafka</span
+                  ><span class="chip">Kubernetes</span>
+                </div>
+                <div class="proj-links">
+                  <a href="#" target="_blank" rel="noopener"
+                    >GitHub ↗
+                    <span
+                      class="mono"
+                      style="font-size: 10px; color: var(--text-faint)"
+                      >(private)</span
+                    ></a
+                  >
+                </div>
+              </article>
+
+              <article class="proj-card">
+                <div class="proj-card-head">
+                  <h3>Memory Optimization — Document Converter</h3>
+                  <span class="yr mono">Klearnow</span>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Problem</div>
+                  <p>
+                    The document conversion service hit OutOfMemory errors on
+                    large files — memory usage occasionally grew to nearly
+                    <strong>10 GB</strong>, causing pod instability and crashes.
+                    Running on Java 8, garbage collection alone couldn't
+                    reliably recover memory under peak load.
+                  </p>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">What I built</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Added runtime memory monitoring that pauses new document
+                      processing when JVM memory approaches
+                      <strong>95%</strong> of the container limit, giving GC
+                      room to recover before continuing.
+                    </li>
+                    <li>
+                      Built an alerting mechanism that automatically identifies
+                      the specific files responsible for abnormal memory growth,
+                      making production debugging significantly easier.
+                    </li>
+                  </ul>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Impact</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Eliminated repeated pod crashes caused by oversized
+                      documents.
+                    </li>
+                    <li>
+                      Improved production stability of the conversion service.
+                    </li>
+                    <li>
+                      Enabled faster identification and resolution of
+                      problematic customer files.
+                    </li>
+                  </ul>
+                </div>
+                <div class="proj-stack">
+                  <span class="chip">Java</span><span class="chip">JVM</span
+                  ><span class="chip">Kubernetes</span
+                  ><span class="chip">Monitoring</span>
+                </div>
+                <div class="proj-links">
+                  <a href="#" target="_blank" rel="noopener"
+                    >GitHub ↗
+                    <span
+                      class="mono"
+                      style="font-size: 10px; color: var(--text-faint)"
+                      >(private)</span
+                    ></a
+                  >
+                </div>
+              </article>
+
+              <article class="proj-card">
+                <div class="proj-card-head">
+                  <h3>Auto ISF Filing</h3>
+                  <span class="yr mono">Klearnow</span>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Problem</div>
+                  <p>
+                    Importer Security Filing (ISF) submissions are mandatory
+                    before cargo reaches the U.S. Missing or invalid filings
+                    risk penalties starting at <strong>$5,000/shipment</strong>,
+                    while manual review slowed processing and added operational
+                    effort.
+                  </p>
+                </div>
+                <div
+                  class="proj-diagram"
+                  role="img"
+                  aria-label="Diagram: customer-specific SOP profiles from MongoDB feed a rule engine that populates fields, validates them, and submits filings directly to CBP."
+                >
+                  <svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg">
+                    <path class="diag-flow" d="M100,60 H160" />
+                    <path class="diag-flow" d="M300,60 H360" />
+                    <rect
+                      class="diag-box"
+                      x="10"
+                      y="35"
+                      width="90"
+                      height="50"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="22" cy="47" r="2.5" />
+                    <text class="diag-label" x="28" y="51">MongoDB</text>
+                    <text class="diag-sub" x="18" y="73">SOP profiles</text>
+                    <rect
+                      class="diag-box"
+                      x="160"
+                      y="30"
+                      width="140"
+                      height="60"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="172" cy="44" r="2.5" />
+                    <text class="diag-label" x="178" y="48">Rule engine</text>
+                    <text class="diag-sub" x="170" y="64">populate fields</text>
+                    <text class="diag-sub" x="170" y="76">validate</text>
+                    <rect
+                      class="diag-box"
+                      x="360"
+                      y="35"
+                      width="90"
+                      height="50"
+                      rx="2"
+                    />
+                    <circle class="diag-dot" cx="372" cy="47" r="2.5" />
+                    <text class="diag-label" x="378" y="51">CBP</text>
+                    <text class="diag-sub" x="368" y="73">submit</text>
+                  </svg>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">What I built</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Designed and implemented a rule-based SOP engine that
+                      retrieves customer-specific SOP profiles from MongoDB.
+                    </li>
+                    <li>
+                      Automatically populates missing shipment fields and
+                      applies configurable validation rules.
+                    </li>
+                    <li>Submits validated filings directly to CBP.</li>
+                  </ul>
+                </div>
+                <div class="proj-block">
+                  <div class="pb-label">Impact</div>
+                  <ul class="exp-bullets">
+                    <li>
+                      Automatically files
+                      <strong>100–150 shipments/day</strong>.
+                    </li>
+                    <li>Reduced manual intervention for ISF submissions.</li>
+                    <li>
+                      Achieved near-zero missed ISF filings, helping avoid
+                      costly compliance penalties.
+                    </li>
+                  </ul>
+                </div>
+                <div class="proj-stack">
+                  <span class="chip">MongoDB</span
+                  ><span class="chip">Rule Engine</span
+                  ><span class="chip">CBP Integration</span>
+                </div>
+                <div class="proj-links">
+                  <a href="#" target="_blank" rel="noopener"
+                    >GitHub ↗
+                    <span
+                      class="mono"
+                      style="font-size: 10px; color: var(--text-faint)"
+                      >(private)</span
+                    ></a
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- MORE PROJECTS -->
+          <div class="proj-group">
+            <div class="proj-group-label">More projects</div>
+            <div class="more-list">
+              <div class="more-item">
+                <div>
+                  <h4>Compliance Tracking Automation</h4>
+                  <span class="org">Eatclub Brands · 2022–24</span>
+                </div>
+                <p>
+                  Flask + SQL web app that replaced a fully manual Excel-based
+                  restaurant audit process with a centralized system.
+                </p>
+              </div>
+              <div class="more-item">
+                <div>
+                  <h4>AI Video Generator Service</h4>
+                  <span class="org">Personal · 2026</span>
+                </div>
+                <p>
+                  Microservice automating script generation, image synthesis,
+                  TTS voice-over, and FFmpeg rendering for YouTube delivery.
+                </p>
+                <a
+                  href="https://www.youtube.com/@Concept_Simplified/shorts"
+                  target="_blank"
+                  rel="noopener"
+                  >Demo ↗</a
+                >
+              </div>
+              <div class="more-item">
+                <div>
+                  <h4>GitHub PR Automation Hook</h4>
+                  <span class="org">Personal · 2025</span>
+                </div>
+                <p>
+                  Event-driven Flask server that validates inbound PRs against
+                  branch compliance rules and grants review access
+                  automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" aria-labelledby="skills-heading">
+          <div class="label sec-label">04 — Technical skills</div>
+          <h2 id="skills-heading" class="sr-only">Technical skills</h2>
+          <div class="skills-cols">
+            <div class="skill-col">
+              <div class="label">Languages</div>
+              <ul>
+                <li>Java</li>
+                <li>Python</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <div class="label">Backend & APIs</div>
+              <ul>
+                <li>Spring Boot</li>
+                <li>Flask · FastAPI</li>
+                <li>gRPC · REST</li>
+                <li>Microservices</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <div class="label">Data & Messaging</div>
+              <ul>
+                <li>Kafka</li>
+                <li>AWS SQS</li>
+                <li>PostgreSQL · MySQL</li>
+                <li>MongoDB · Redis</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <div class="label">Infra & DevOps</div>
+              <ul>
+                <li>AWS (S3, EC2)</li>
+                <li>Docker</li>
+                <li>Kubernetes</li>
+                <li>CI/CD</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <div class="label">Tools</div>
+              <ul>
+                <li>Git</li>
+                <li>Pandas · NumPy</li>
+                <li>FFmpeg</li>
+                <li>Gemini SDK</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements" aria-labelledby="achievements-heading">
+          <div class="label sec-label">05 — Education & achievements</div>
+          <h2 id="achievements-heading" class="sr-only">
+            Education and achievements
+          </h2>
+          <ul class="achv-list">
+            <li>
+              <span class="tag">Education</span
+              ><span
+                ><strong>B.Tech, Mechanical Engineering</strong> — IIT Jammu,
+                CGPA 8.25/10.0 (2017–2021)</span
+              >
+            </li>
+            <li>
+              <span class="tag">Award</span
+              ><span
+                ><strong>Silver Medal</strong>, Bosch Route Optimization
+                Hackathon — Inter-IIT Tech Meet, heuristic search paths</span
+              >
+            </li>
+            <li>
+              <span class="tag">Leadership</span
+              ><span
+                ><strong>Academic Secretary</strong>, Student Council, IIT Jammu
+                (2019–2020) — tech club infrastructure & student resolution
+                frameworks</span
+              >
+            </li>
+          </ul>
+        </section>
       </div>
-    </div>
-  </section>
+    </main>
 
-  <!-- SKILLS -->
-  <section id="skills" aria-labelledby="skills-heading">
-    <div class="label sec-label">04 — Technical skills</div>
-    <h2 id="skills-heading" class="sr-only">Technical skills</h2>
-    <div class="skills-cols">
-      <div class="skill-col"><div class="label">Languages</div><ul><li>Java</li><li>Python</li><li>SQL</li></ul></div>
-      <div class="skill-col"><div class="label">Backend & APIs</div><ul><li>Spring Boot</li><li>Flask · FastAPI</li><li>gRPC · REST</li><li>Microservices</li></ul></div>
-      <div class="skill-col"><div class="label">Data & Messaging</div><ul><li>Kafka</li><li>AWS SQS</li><li>PostgreSQL · MySQL</li><li>MongoDB · Redis</li></ul></div>
-      <div class="skill-col"><div class="label">Infra & DevOps</div><ul><li>AWS (S3, EC2)</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li></ul></div>
-      <div class="skill-col"><div class="label">Tools</div><ul><li>Git</li><li>Pandas · NumPy</li><li>FFmpeg</li><li>Gemini SDK</li></ul></div>
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENTS -->
-  <section id="achievements" aria-labelledby="achievements-heading">
-    <div class="label sec-label">05 — Education & achievements</div>
-    <h2 id="achievements-heading" class="sr-only">Education and achievements</h2>
-    <ul class="achv-list">
-      <li><span class="tag">Education</span><span><strong>B.Tech, Mechanical Engineering</strong> — IIT Jammu, CGPA 8.25/10.0 (2017–2021)</span></li>
-      <li><span class="tag">Award</span><span><strong>Silver Medal</strong>, Bosch Route Optimization Hackathon — Inter-IIT Tech Meet, heuristic search paths</span></li>
-      <li><span class="tag">Leadership</span><span><strong>Academic Secretary</strong>, Student Council, IIT Jammu (2019–2020) — tech club infrastructure & student resolution frameworks</span></li>
-    </ul>
-  </section>
-
-</div>
-</main>
-
-<footer id="contact" aria-labelledby="contact-heading">
-  <div class="wrap">
-    <h2 id="contact-heading">Interested in building distributed systems <em>at scale</em>?</h2>
-    <p class="sub">Let's connect — I check my inbox daily.</p>
-    <a class="btn btn-primary" href="mailto:sharmahardik0712@gmail.com">sharmahardik0712@gmail.com</a>
-    <div class="foot-links">
-      <a href="tel:+916005291440">+91-6005291440</a>
-      <a href="https://linkedin.com/in/hardik-sharma" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://leetcode.com/sharmahardik0712" target="_blank" rel="noopener">LeetCode</a>
-      <a href="#" target="_blank" rel="noopener">GitHub</a>
-      <a href="Hardik_Sharma_Resume.pdf" download>Download Resume</a>
-    </div>
-    <div class="copyright">© 2026 Hardik Sharma</div>
-  </div>
-</footer>
-
-</body>
+    <footer id="contact" aria-labelledby="contact-heading">
+      <div class="wrap">
+        <h2 id="contact-heading">
+          Interested in building distributed systems <em>at scale</em>?
+        </h2>
+        <p class="sub">Let's connect — I check my inbox daily.</p>
+        <a class="btn btn-primary" href="mailto:sharmahardik0712@gmail.com"
+          >sharmahardik0712@gmail.com</a
+        >
+        <div class="foot-links">
+          <a href="tel:+916005291440">+91-6005291440</a>
+          <a
+            href="https://www.linkedin.com/in/hardik-sharma-4aa198162/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://leetcode.com/sharmahardik0712"
+            target="_blank"
+            rel="noopener"
+            >LeetCode</a
+          >
+          <a
+            href="https://github.com/sharmahardik0712"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          <a
+            href="https://drive.google.com/uc?export=download&id=1OTueKHDGBcdYZa0MQbvqTiOesFuHPPVp"
+            download
+            >Download Resume</a
+          >
+        </div>
+        <div class="copyright">© 2026 Hardik Sharma</div>
+      </div>
+    </footer>
+  </body>
 </html>
